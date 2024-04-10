@@ -21,10 +21,9 @@ public class Payment {
     private String breed;
     private String gender;
     private String color;
-    private String Payment;
 
 
-    public Payment(int id, String email, String name, String phone, String address, String breed, String gender, String color, String payment) {
+    public Payment(int id, String email, String name, String phone, String address, String breed, String gender, String color) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -33,7 +32,7 @@ public class Payment {
         this.breed = breed;
         this.gender = gender;
         this.color = color;
-        Payment = payment;
+//        Payment = payment;
     }
 
     public int getId() {
@@ -100,11 +99,11 @@ public class Payment {
         this.color = color;
     }
 
-    public String getPayment() {
-        return Payment;
-    }
-
-    public void setPayment(String payment) {
-        Payment = payment;
-    }
+//    public String getPayment() {
+//        return Payment;
+//    }
+//
+//    public void setPayment(String payment) {
+//        Payment = payment;
+//    }
 }
