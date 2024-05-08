@@ -19,15 +19,28 @@ public class UserController {
     @Autowired
     private UserRepository ur;
 
+
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         try {
             userService.saveUser(user);
-            return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully!");
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email already exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
         }
     }
+
+//    @PostMapping("/save")
+//    public ResponseEntity<?> saveUser(@RequestBody User user) {
+//        try {
+//            userService.saveUser(user);
+//            return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
+//        } catch (IllegalArgumentException e) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email already exist");
+//        }
+//    }
 
 //    @PostMapping("/get")
 //    public ResponseEntity<?> getUserByEmail(@RequestParam User user) {

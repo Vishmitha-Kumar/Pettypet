@@ -20,12 +20,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     public User saveUser(User user) {
-        Optional<User> userExists = userRepository.findByEmail(user.getEmail());
-        if (userExists.isPresent())
-            throw new IllegalArgumentException("Email already exist");
-        else
+        if (userRepository.existsByEmail(user.getEmail())) {  // More direct approach using existsByEmail
+            throw new IllegalArgumentException("Email already exists");
+        }
         return userRepository.save(user);
     }
+
 
 
 
